@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/* --------------------
+common
+-------------------- */
+@media screen and (max-width: 767px) {
+  .is-pc {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .is-sp {
+    display: none;
+  }
+}
+
+body {
+  font-size: 16px;
+  color: #3E3E3E;
+  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "Droid Sans", sans-serif;
+  line-height: 1.5;
+}
+
+img {
+  width: 100%;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .inner {
+    padding: 0 16px;
+  }
+}
+
+/* --------------------
+header
+-------------------- */
+.header {
+  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    height: 68px;
+  }
+}
+
+.header-nav {
+  width: 52.25%;
+  max-width: 627px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .header-nav-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-nav-item + .header-nav-item {
+    margin-left: 40px;
+  }
+}
+
+.header-nav-item-link {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  color: #3E3E3E;
+  letter-spacing: -0.025em;
+  height: 83px;
+  line-height: 83px;
+}
+/*# sourceMappingURL=style.css.map */

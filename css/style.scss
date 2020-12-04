@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+// --------------------
+// mixin
+// --------------------
+
+$breakpoints: (
+    'sp': 'screen and (max-width: 767px)',
+    'pc': 'screen and (min-width: 768px)',
+) !default;
+
+@mixin mq($breakpoint: md) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+// --------------------
+// color
+// --------------------
+
+$color-primary: #3EA1D1;
+$color-font-base: #3E3E3E;
+$color-background-base: #F3F3F3;
+$color-active: #E7728E;
+$hover-opacity: 0.7;
+
+// --------------------
+// フォント
+// --------------------
+
+$font-family-default: "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "Droid Sans", sans-serif;
+$font-family-english: "Montserrat", sans-serif;
+
+// --------------------
+// レイアウト幅
+// --------------------
+
+$layout-width-canvas: 1280px;
+$layout-width-inner: 1200px;
+
+// --------------------
+// 階層
+// --------------------
+
+$layer: (
+	modal: 100, // モダール
+	drawer: 40, // ドロワー
+	floating: 30, // フローティングアイテム
+	header: 20, // ヘッダー
+	footer: 10, // フッター
+	default: 1,
+);
+
+/* --------------------
+common
+-------------------- */
+
+@include mq(sp) {
+    .is-pc {
+        display: none;
+    }
+}
+
+@include mq(pc) {
+    .is-sp {
+        display: none;
+    }
+}
+
+body {
+    font-size: 16px;
+    color: $color-font-base;
+    font-family: $font-family-default;
+    line-height: 1.5; //計算式にする場合は"()"忘れずに！
+}
+
+img {
+    width: 100%;
+}
+
+.inner {
+    max-width: $layout-width-inner;
+    margin: 0 auto;
+    padding: 0 40px;
+    
+    @include mq(sp) {
+        padding: 0 16px;
+    }
+}
+
+/* --------------------
+header
+-------------------- */
+
+.header {
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: map-get($layer, 'header');
+
+    @include mq(sp) {
+        height: 68px;
+    }
+
+}
+
+.header-nav {
+    width: 52.25%;
+    max-width: 627px;
+    margin: 0 auto; //marginで中央寄せする場合はwidth指定必須
+}
+
+.header-nav-list {
+    @include mq(pc) {
+        display: flex;
+    }
+}
+
+.header-nav-item {
+    & + & { //隣接セレクタ指定（https://webllica.com/css-combinators/）
+        @include mq(pc) {
+            margin-left: 40px;
+        }
+    }
+}
+
+.header-nav-item-link {
+    display: block;
+    font-family: $font-family-english;
+    color: $color-font-base;
+    letter-spacing: -0.025em;
+    height: 83px;
+    line-height: 83px;
+}
